@@ -68,10 +68,12 @@ $(this).on("click", function(event) {
         score = score + numberOptions[3];
     }
  console.log(score) 
-  $(score).text(score);
+ var scoreTotal = document.getElementById("score-text");
+  $(scoreTotal).text("score-text");
+//   console.log(scoreTotal)
 });
 
-function winLose () {
+function winLose() {
    
     if (score === computerGuess) {
         winsCounter++;
