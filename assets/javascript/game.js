@@ -67,13 +67,23 @@ $(this).on("click", function(event) {
     } else if (event.target.id == "crystal-four") {
         score = score + numberOptions[3];
     }
- console.log(score)
+ console.log(score) 
+  $(score).text(score);
 });
 
 function winLose () {
-    if (computerGuess === score) {
-
+   
+    if (score === computerGuess) {
+        winsCounter++;
+      
+      $("#wins").html(winsCounter)
+        updateView();
+    } else if (score > computerGuess) {
+        lossesCounter++;
+       $("#losses").html(lossesCounter);
+        updateView();
     }
+    winLose();
 }
 
 
