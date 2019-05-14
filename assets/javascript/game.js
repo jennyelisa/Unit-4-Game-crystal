@@ -4,8 +4,9 @@ var score = 0; //this will push to number-box
 var crystals = []; //do i need each crystal to have its own number?
 var computerGuess; //number generated
 var numberOptions = [];
-var winsCounter = document.getElementById("wins");
-var lossesCounter = document.getElementById("losses");
+var winsCounter = 0;
+var lossesCounter = 0;
+var scoreTotal = document.getElementById("score-text");
 var crystalOne = document.getElementById("crystal-one");
 var crystalTwo = document.getElementById("crystal-two");
 var crystalThree = document.getElementById("crystal-three");
@@ -39,7 +40,7 @@ function restart() {
     }
     console.log(numberOptions);
 
-
+    score = 0;
    
 
     updateView();
@@ -48,13 +49,15 @@ function restart() {
 function updateView() {
     var numberBox = document.getElementById("number-box");
     $(numberBox).text(computerGuess);
-
+     $("#wins").text("Your total wins:" + winsCounter);
+     $(".losses").text("Your total losses:" + lossesCounter);
+     $(scoreTotal).text(score);
 }
 
 
 $(this).on("click", function(event) {
     // console.log(event.target);
-    var target = $(event.target.id);
+
     // console.log(target);
     
 
@@ -67,25 +70,24 @@ $(this).on("click", function(event) {
     } else if (event.target.id == "crystal-four") {
         score = score + numberOptions[3];
     }
+
  console.log(score) 
- var scoreTotal = document.getElementById("score-text");
-  $(scoreTotal).text("score-text");
+ 
+  
 //   console.log(scoreTotal)
+winLose();
 });
 
 function winLose() {
    
     if (score === computerGuess) {
-        winsCounter++;
-      
-      $("#wins").html(winsCounter)
-        updateView();
+        winsCounter = winsCounter + 1
+        restart()
     } else if (score > computerGuess) {
         lossesCounter++;
-       $("#losses").html(lossesCounter);
-        updateView();
+        restart()
     }
-    winLose();
+    updateView();
 }
 
 
