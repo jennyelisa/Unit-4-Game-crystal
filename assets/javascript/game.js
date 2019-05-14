@@ -49,8 +49,8 @@ function restart() {
 function updateView() {
     var numberBox = document.getElementById("number-box");
     $(numberBox).text(computerGuess);
-     $("#wins").text("Your total wins:" + winsCounter);
-     $(".losses").text("Your total losses:" + lossesCounter);
+     $("#wins").text("Your total wins: " + winsCounter);
+     $(".losses").text("Your total losses: " + lossesCounter);
      $(scoreTotal).text(score);
 }
 
